@@ -21,7 +21,7 @@ pipeline {
       //		withSonarQubeEnv('sonarqube') {
        	 sh "mvn sonar:sonar -Dsonar.projectKey=numericapp -Dsonar.host.url=http://test-devsecops.eastus.cloudapp.azure.com:9000 -Dsonar.login=cad2021c05392d4f2944f8ab0f6e782161dba47f"
     	  }
- 	 }
+ 		 }
 
     //	  timeout(time: 2, unit: 'MINUTES') {
     	  //	script {
@@ -36,8 +36,8 @@ pipeline {
      	   steps {
         		withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
           		sh 'printenv'
-       		    sh 'docker build -t nadiyar/numericapp:""$GIT_COMMIT"" .'
-         		sh 'docker push nadiyar/numericapp:""$GIT_COMMIT""'
+       		    sh 'docker build -t nadiyar/numeric-app:""$GIT_COMMIT"" .'
+         		sh 'docker push nadiyar/numeric-app:""$GIT_COMMIT""'
       		   }
        		 }  
       	}
